@@ -1,0 +1,28 @@
+diff --git a/node_modules/bitcoinjs-lib/src/transaction.d.ts b/node_modules/bitcoinjs-lib/src/transaction.d.ts
+index 613706b..eb28134 100644
+--- a/node_modules/bitcoinjs-lib/src/transaction.d.ts
++++ b/node_modules/bitcoinjs-lib/src/transaction.d.ts
+@@ -49,7 +49,7 @@ export declare class Transaction {
+     hashForWitnessV0(inIndex: number, prevOutScript: Buffer, value: number, hashType: number): Buffer;
+     getHash(forWitness?: boolean): Buffer;
+     getId(): string;
+-    toBuffer(buffer?: Buffer, initialOffset?: number): Buffer;
++    toBuffer(buffer?: Buffer, initialOffset?: number, witness?: boolean): Buffer;
+     toHex(): string;
+     setInputScript(index: number, scriptSig: Buffer): void;
+     setWitness(index: number, witness: Buffer[]): void;
+diff --git a/node_modules/bitcoinjs-lib/src/transaction.js b/node_modules/bitcoinjs-lib/src/transaction.js
+index 6f1382c..9a251a5 100644
+--- a/node_modules/bitcoinjs-lib/src/transaction.js
++++ b/node_modules/bitcoinjs-lib/src/transaction.js
+@@ -475,8 +475,8 @@ class Transaction {
+       'hex',
+     );
+   }
+-  toBuffer(buffer, initialOffset) {
+-    return this.__toBuffer(buffer, initialOffset, true);
++  toBuffer(buffer, initialOffset, witness = true) {
++    return this.__toBuffer(buffer, initialOffset, witness);
+   }
+   toHex() {
+     return this.toBuffer(undefined, undefined).toString('hex');

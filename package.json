@@ -1,0 +1,28 @@
+{
+  "name": "bitcoin-easter-egg-tx",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc --build tsconfig.build.json",
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "bip32": "^4.0.0",
+    "bip39": "^3.1.0",
+    "bitcoinjs-lib": "^6.1.0",
+    "dotenv": "^16.3.1",
+    "secp256k1": "^5.0.0",
+    "tiny-secp256k1": "^2.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "16",
+    "@types/secp256k1": "^4.0.3",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
+    "prettier": "^2.8.7",
+    "prettier-plugin-packagejson": "^2.4.3",
+    "typescript": "^5.0.4"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
